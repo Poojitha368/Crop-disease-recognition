@@ -2,7 +2,7 @@
 
 Live demo link : https://crop-disease-recognition-ky2zaryzwy5ysvgh2hajba.streamlit.app/
 <p></p>
-kaggle dataset link : https://www.kaggle.com/datasets/rashikrahmanpritom/plant-disease-recognition-dataset
+kaggle dataset link : https://www.kaggle.com/datasets/rashikrahmanpritom/plant-disease-recognition-dataset <p></p>
 
 ![image](https://github.com/user-attachments/assets/fd8d86c1-9721-4131-95d8-287afd0e270e)
 
