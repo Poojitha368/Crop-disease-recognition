@@ -1,10 +1,28 @@
 import streamlit as st
+import gdown
 import numpy as np
 import tensorflow as tf
 from PIL import Image
 import time as t
+import os
 
-model = tf.keras.models.load_model('disease_disease_recognition.h5')
+# Function to download the model file using gdown
+@st.cache_resource
+def download_model():
+    file_path = 'disease_disease_recognition.h5'
+    
+    # Check if the file already exists
+    if not os.path.exists(file_path):
+        # Use the direct download link format
+        url = 'https://drive.google.com/uc?id=147s7Y2kVnIWLq67oI0uQmGt_s77M3pRQ'
+        gdown.download(url, file_path, quiet=False)
+    else:
+        st.write("Model file already exists. Skipping download.")
+    
+    return tf.keras.models.load_model(file_path)
+
+# Load the model
+model = download_model()
 
 st.title('🌿Crop Disease Prediction')
 st.info("Upload an image to check if the plant is affected or not.")
@@ -23,10 +41,9 @@ if uploaded_file is not None:
     img_array = tf.cast(img_array, tf.float32) / 255.0  # Normalize the image
     img_array = tf.expand_dims(img_array, axis=0)  # Model expects a batch of images
 
-
     st.subheader("Type")
-    #loading
-    with st.spinner("classifying"):
+    # Loading
+    with st.spinner("Classifying..."):
         t.sleep(2)
     predictions = model.predict(img_array)
     
