@@ -44,7 +44,7 @@ if uploaded_file is not None:
     st.subheader("Type")
     # Loading
     with st.spinner("Classifying..."):
-        t.sleep(2)
+        t.sleep(3)
     predictions = model.predict(img_array)
     
     # Assuming the model returns class probabilities, convert to class index
